@@ -7,27 +7,36 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_pinecone import PineconeVectorStore
 from langchain.chains import RetrievalQA
 
+_CACHED_EMBEDDINGS = None
+
+def get_embeddings():
+    """Singleton getter for sentence-transformers embedding model."""
+    global _CACHED_EMBEDDINGS
+    if _CACHED_EMBEDDINGS is None:
+        _CACHED_EMBEDDINGS = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
+    return _CACHED_EMBEDDINGS
+
 def get_answer(query: str):
     """
     Retrieves relevant 10-K document chunks from Pinecone
     and synthesizes an analytical answer using Groq Llama 3.3 70B.
     """
-    index_name = os.getenv("PINECONE_INDEX_NAME", "fin-analyst-index")
+    if not query or not query.strip():
+        raise ValueError("Query string cannot be empty or whitespace.")
 
-    # Local embedding model — dimension 384
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
+    index_name = os.getenv("PINECONE_INDEX_NAME", "fin-analyst-index")
+    embeddings = get_embeddings()
 
     vectorstore = PineconeVectorStore(
         index_name=index_name,
         embedding=embeddings
     )
 
-    # Groq-hosted high-speed LLaMA 3.3 70B
     llm = ChatGroq(
         model_name="llama-3.3-70b-versatile",
-        temperature=0  # Zero temperature for strictly factual financial extraction
+        temperature=0
     )
 
     qa_chain = RetrievalQA.from_chain_type(
@@ -37,4 +46,4 @@ def get_answer(query: str):
         return_source_documents=True
     )
 
-    return qa_chain.invoke({"query": query})
+    return qa_chain.invoke({"query": query.strip()})

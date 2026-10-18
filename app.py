@@ -4,7 +4,7 @@ from utils import get_answer
 
 st.set_page_config(
     page_title="Financial Analyst RAG — SEC 10-K Intelligence",
-    page_icon="📈",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -32,18 +32,18 @@ st.markdown("""
 
 # Sidebar
 with st.sidebar:
-    st.title("📈 SEC 10-K Intelligence")
+    st.title(" SEC 10-K Intelligence")
     st.markdown("""
     **Financial Analyst Assistant** leverages LangChain, Pinecone vector search, and Groq's high-speed Llama 3.3 70B to analyze complex financial disclosures.
     """)
     st.divider()
-    st.markdown("### ⚙️ Engine Spec")
+    st.markdown("### Engine Spec")
     st.markdown("- **Document:** NVIDIA FY2024 Form 10-K")
     st.markdown("- **Embedding:** `all-MiniLM-L6-v2` (384d)")
     st.markdown("- **Vector Store:** Pinecone Serverless")
     st.markdown("- **Inference LLM:** Groq `llama-3.3-70b-versatile`")
     st.divider()
-    st.markdown("### 💡 Sample Prompts")
+    st.markdown("### Sample Prompts")
     examples = [
         "What was NVIDIA's total revenue in FY2024 vs FY2023?",
         "What are the primary drivers of Data Center revenue growth?",
@@ -55,7 +55,7 @@ with st.sidebar:
             st.session_state["query_input"] = ex
 
 # Main UI
-st.title("📊 Financial Analyst Assistant")
+st.title(" Financial Analyst Assistant")
 st.caption("Grounded SEC 10-K Quantitative & Qualitative Retrieval-Augmented Generation")
 
 # Query Input
@@ -72,18 +72,18 @@ with col1:
 
 if (ask_button or default_query) and query:
     if not os.getenv("GROQ_API_KEY") or not os.getenv("PINECONE_API_KEY"):
-        st.error("⚠️ Missing API keys! Please set GROQ_API_KEY and PINECONE_API_KEY in your .env file.")
+        st.error(" Missing API keys! Please set GROQ_API_KEY and PINECONE_API_KEY in your .env file.")
     else:
         with st.spinner("Analyzing SEC 10-K filings and synthesizing metrics..."):
             try:
                 response = get_answer(query)
                 
-                st.subheader("📋 Financial Analysis")
+                st.subheader(" Financial Analysis")
                 st.markdown(response["result"])
 
                 # Source Evidence Display
                 if "source_documents" in response and response["source_documents"]:
-                    with st.expander(f"🔍 Inspect Retrieved 10-K Context ({len(response['source_documents'])} passages)"):
+                    with st.expander(f" Inspect Retrieved 10-K Context ({len(response['source_documents'])} passages)"):
                         for i, doc in enumerate(response["source_documents"], 1):
                             page_num = doc.metadata.get("page", "N/A")
                             source_file = doc.metadata.get("source", "nvidia_10k.pdf")
