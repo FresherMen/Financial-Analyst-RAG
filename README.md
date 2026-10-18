@@ -1,4 +1,4 @@
-# 📈 Financial Analyst RAG — SEC 10-K Intelligence
+# Financial Analyst RAG — SEC 10-K Intelligence
 
 > A specialized Retrieval-Augmented Generation assistant designed for **SEC Form 10-K annual report analysis**, powered by **LangChain**, **Pinecone vector database**, **HuggingFace MiniLM embeddings**, **Groq-accelerated LLaMA 3.3 70B**, and an interactive **Streamlit dashboard**.
 
@@ -11,18 +11,18 @@
 
 ---
 
-## 📑 Table of Contents
-- [Overview](#-overview)
-- [Architecture Workflow](#-architecture-workflow)
-- [Key Features](#-key-features)
-- [Project Structure](#-project-structure)
-- [Quick Start](#-quick-start)
-- [Sample Queries & Analysis](#-sample-queries--analysis)
-- [License](#-license)
+## Table of Contents
+- [Overview](#overview)
+- [Architecture Workflow](#architecture-workflow)
+- [Key Features](#key-features)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [Sample Queries & Analysis](#sample-queries--analysis)
+- [License](#license)
 
 ---
 
-## 🌟 Overview
+## Overview
 
 Corporate annual reports (SEC Form 10-K) span hundreds of pages with dense financial tables, GAAP/non-GAAP reconciliations, segment breakdowns, and critical risk factors. 
 
@@ -30,7 +30,7 @@ Corporate annual reports (SEC Form 10-K) span hundreds of pages with dense finan
 
 ---
 
-## 🏗️ Architecture Workflow
+## Architecture Workflow
 
 ```mermaid
 graph LR
@@ -54,7 +54,7 @@ graph LR
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - **Strict Factual Accuracy:** Configured with `temperature=0` to eliminate hallucinations on earnings figures, revenue metrics, and operating expenses.
 - **Source Grounding & Evidence Inspection:** Every answer includes an expandable passage inspector showing exact filing snippets and page numbers.
@@ -64,10 +64,10 @@ graph LR
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-03-Financial-Analyst-RAG/
+Financial-Analyst-RAG/
 ├── app.py               # Streamlit application with interactive UI
 ├── ingestion.py         # PDF parsing, chunking, embedding, and Pinecone upload
 ├── utils.py             # LangChain RetrievalQA chain with Groq Llama 3.3
@@ -79,7 +79,7 @@ graph LR
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Prerequisites
 - Python 3.10 or higher
@@ -125,7 +125,7 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 💡 Sample Queries & Analysis
+## Sample Queries & Analysis
 
 Try asking:
 - *"What was NVIDIA's total revenue in FY2024 and how does it compare to FY2023?"*
@@ -135,5 +135,6 @@ Try asking:
 
 ---
 
-## 📄 License
-This project is licensed under the [MIT License](../LICENSE).
+## License
+
+This project is licensed under the MIT License.
