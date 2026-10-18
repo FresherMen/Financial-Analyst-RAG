@@ -1,0 +1,11 @@
+langchain
+langchain-groq
+langchain-huggingface
+langchain-community
+langchain-pinecone
+pinecone-client
+sentence-transformers
+pypdf
+python-dotenv
+streamlit
+tiktoken
