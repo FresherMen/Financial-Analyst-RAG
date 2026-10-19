@@ -8,6 +8,7 @@
 ![Groq](https://img.shields.io/badge/Inference-Groq%20Llama%203.3%2070B-orange?style=flat-square)
 ![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?style=flat-square&logo=streamlit)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ankur%20Pal-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/ankur-pal-2b2ba9433)
 
 ---
 
@@ -132,6 +133,15 @@ Try asking:
 - *"What factors contributed to the growth in the Data Center segment?"*
 - *"What are the primary risk factors regarding supply chain and wafer manufacturing?"*
 - *"Summarize NVIDIA's gross margin performance and operating expenses in fiscal 2024."*
+
+---
+
+## Author & Connect
+
+**Ankur Pal**  
+- **LinkedIn:** [Ankur Pal](https://www.linkedin.com/in/ankur-pal-2b2ba9433)  
+- **GitHub:** [@FresherMen](https://github.com/FresherMen)  
+- **Portfolio:** [freshermen.github.io](https://freshermen.github.io)  
 
 ---
 
