@@ -7,15 +7,18 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_pinecone import PineconeVectorStore
 
-def process_pdf(file_path):
+def process_pdf(file_path: str, chunk_size: int = 1000, chunk_overlap: int = 100):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Source PDF document not found at: {file_path}")
+
     # 1. Load PDF
-    print("Loading PDF...")
+    print(f"Loading PDF from {file_path}...")
     loader = PyPDFLoader(file_path)
     docs = loader.load()
     print(f"Loaded {len(docs)} pages.")
 
     # 2. Chunking (small chunks better for specific financial metrics)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
     splits = text_splitter.split_documents(docs)
     print(f"Split into {len(splits)} chunks.")
 
